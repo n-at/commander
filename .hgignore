@@ -1,0 +1,7 @@
+syntax:glob
+
+.idea/*
+node-modules
+log/*
+
+*.pid

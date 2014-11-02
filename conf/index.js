@@ -9,8 +9,10 @@ nconf.file(path.join(__dirname, 'config.json'));
 var root = path.join(__dirname, '..');
 nconf.set('root_path', root);
 nconf.set('log_path', path.join(root, 'log'));
+nconf.set('tmp_path', path.join(root, 'tmp'));
 
-//create log directory
+//create directories
 mkdirp.sync(nconf.get('log_path'));
+mkdirp.sync(nconf.get('tmp_path'));
 
 module.exports = nconf;

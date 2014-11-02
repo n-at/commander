@@ -5,6 +5,7 @@
     "unit_host": "0.0.0.0",
     "unit_port": "3000",
     "unit_api_key": "remote_unit",
+    "unit_shell": "/bin/bash",
 
     "log_level": "debug",
     "log_name": "commander.log"

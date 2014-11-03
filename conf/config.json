@@ -8,7 +8,9 @@
         "host": "0.0.0.0",
         "port": "3000",
         "api_key": "remote_unit",
-        "shell": "/bin/bash"
+        "shell": "/bin/bash",
+        "presetOnly": false,
+        "request_max_length": 1000000
     },
 
     "log_level": "debug",

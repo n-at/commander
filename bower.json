@@ -1,5 +1,5 @@
 {
-  "name": "remote-commander",
+  "name": "commander",
   "license": "BSD 3-Clause",
   "private": true,
   "dependencies": {

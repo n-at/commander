@@ -1,3 +1,3 @@
-//Remote Commander server
+//commander server
 
 var commander = require('./lib/commander');

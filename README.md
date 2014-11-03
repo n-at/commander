@@ -1,9 +1,21 @@
-Remote Commander
-================
+commander
+=========
 
-_Commander_ server: interact with units and run tasks.
-_Unit_ server: receive commands and perform actions. 
+_commander_ server: interface to interact with units and remotely run tasks.
 
-Start Remote Commander server: `node commander-ctl start`
+_unit_ server: receive commands and perform actions (e.g. run shell scripts). 
+
+##Installation
+
+Run in shell:
+
+    npm install
+    bower install
+    
+And edit configuration in `conf/config.json`.
+
+##Usage
+
+Start commander server: `node commander-ctl start`
  
-Start Remote Unit server: `node unit-ctl start`
+Start commander unit: `node unit-ctl start`

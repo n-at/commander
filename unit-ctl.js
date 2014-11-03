@@ -1,7 +1,7 @@
 var daemon = require('daemonize2').setup({
     main: 'unit.js',
     pidfile: 'unit.pid',
-    name: 'Remote Unit server'
+    name: 'commander unit server'
 });
 switch(process.argv[2]) {
     case 'start':
@@ -18,13 +18,13 @@ switch(process.argv[2]) {
     case 'status':
         var pid = daemon.status();
         if(pid) {
-            console.log('Remote Unit server is running with pid:%s', pid);
+            console.log('commander unit server is running with pid:%s', pid);
         } else {
-            console.log('Remote Unit is not running');
+            console.log('commander unit is not running');
         }
         break;
     case 'version':
-        console.log('Remote Commander ' + require('./package').version);
+        console.log('commander ' + require('./package').version);
         break;
     default:
         console.log('Usage: [start|stop|restart|status|version]');

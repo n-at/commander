@@ -1,0 +1,23 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    <div class="row">
+        {# menu #}
+        <div class="col-md-3">
+            {% include "menu.twig" %}
+        </div>
+
+        {# content #}
+        <div class="col-md-9">
+
+            <div class="text-center">
+                <h4>{% block cardTitle %}{% endblock %}</h4>
+            </div>
+
+            {% block cardContent %}{% endblock %}
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -5,6 +5,7 @@
   "dependencies": {
     "bootstrap": "~3.3.0",
     "jquery": "1.11.1",
-    "messenger": "~1.4.1"
+    "messenger": "~1.4.1",
+    "font-awesome": "~4.2.0"
   }
 }

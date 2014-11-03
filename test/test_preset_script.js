@@ -1,4 +1,4 @@
-var runner = require('../lib/runner');
+var runner = require('../lib/unit/runner');
 
 //running existing script
 runner.executePreset('uname.sh', function(err, result) {

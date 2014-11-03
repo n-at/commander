@@ -24,7 +24,8 @@ var req = http.request(options, function(res) {
 
 req.end(qs.stringify({
     api_key: config.get('unit:api_key'),
-    task_id: uuid.v1(),
+    task_id: uuid.v4(),
+    run_id: uuid.v4(),
     task: [
         {
             type: 'script',

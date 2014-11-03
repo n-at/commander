@@ -4,5 +4,6 @@ syntax:glob
 node-modules
 log/*
 tmp/*
+public/components/*
 
 *.pid

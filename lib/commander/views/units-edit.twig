@@ -1,0 +1,41 @@
+{% extends "card.twig" %}
+
+{% block cardTitle %}
+    {% if action == 'add' %}Add unit{% endif %}
+    {% if action == 'edit' %}Edit unit{% endif %}
+{% endblock %}
+
+{% block cardContent %}
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <form method="POST" action="/unit-save">
+
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-control" value="{{ unit.name }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" class="form-control" value="{{ unit.address }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="apikey">API key:</label>
+                    <input type="text" id="apikey" name="api_key" class="form-control" value="{{ unit.api_key }}">
+                </div>
+
+                <input type="hidden" name="unit_id" value="{{ unit.id }}">
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

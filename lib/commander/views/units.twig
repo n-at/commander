@@ -3,5 +3,37 @@
 {% block cardTitle %}Units{% endblock %}
 
 {% block cardContent %}
-    <div class="alert alert-info">Here will be content</div>
+
+    <div class="text-center">
+        <a class="btn btn-default" href="/units/add">
+            <i class="fa fa-plus"></i> Add unit
+        </a>
+    </div>
+
+    <hr>
+
+    {% for unit in units %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <strong>{{ unit.name }}</strong>
+
+                <em>{{ unit.address }}</em>
+
+                <div class="pull-right">
+
+                    <a href="/units/edit/{{ unit.id }}" class="text-info">
+                        <i class="fa fa-edit"></i> Edit
+                    </a>
+
+                    <a href="/units/delete/{{ unit.id }}" class="text-danger">
+                        <i class="fa fa-remove"></i> Remove
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}

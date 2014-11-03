@@ -3,5 +3,6 @@ syntax:glob
 .idea/*
 node-modules
 log/*
+tmp/*
 
 *.pid

@@ -1,11 +1,15 @@
 {
-    "commander_host": "0.0.0.0",
-    "commander_port": "4000",
+    "commander": {
+        "host": "0.0.0.0",
+        "port": "4000"
+    },
 
-    "unit_host": "0.0.0.0",
-    "unit_port": "3000",
-    "unit_api_key": "remote_unit",
-    "unit_shell": "/bin/bash",
+    "unit": {
+        "host": "0.0.0.0",
+        "port": "3000",
+        "api_key": "remote_unit",
+        "shell": "/bin/bash"
+    },
 
     "log_level": "debug",
     "log_name": "commander.log"

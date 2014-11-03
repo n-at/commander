@@ -29,11 +29,11 @@ req.end(qs.stringify({
         {
             type: 'script',
             action: '#!/bin/bash\nls /tmp\n',
-            breakOnError: false
+            breakOnError: 0
         }, {
             type: 'preset',
             action: 'uname.sh',
-            breakOnError: false
+            breakOnError: 0
         }
     ]
 }));

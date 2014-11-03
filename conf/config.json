@@ -9,7 +9,7 @@
         "port": "3000",
         "api_key": "remote_unit",
         "shell": "/bin/bash",
-        "presetOnly": false,
+        "preset_only": false,
         "request_max_length": 1000000
     },
 

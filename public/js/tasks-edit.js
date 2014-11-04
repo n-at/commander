@@ -125,7 +125,6 @@
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    var currentStepId = 0;
     var editingStep = -1;
 
     //load step list for current task
@@ -136,7 +135,6 @@
         $.get('/task-steps/' + id, function(steps) {
             for(var i = 0; i < steps.length; i++) {
                 appendStep(steps[i]);
-                currentStepId = Math.max(currentStepId, parseInt(steps[i].id));
             }
         });
     }
@@ -253,7 +251,7 @@
         var breakOnError = $('input[name="breakOnError"]').is(':checked');
 
         var step = {
-            id: ++currentStepId,
+            id: uuid.v4(),
             type: stepType,
             action: action,
             breakOnError: breakOnError ? 1 : 0

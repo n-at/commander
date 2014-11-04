@@ -1,0 +1,60 @@
+{% extends "card.twig" %}
+
+{% block cardTitle %}
+    {% if action == 'add' %}Add task{% endif %}
+    {% if action == 'edit' %}Edit task{% endif %}
+{% endblock %}
+
+{% block cardContent %}
+
+    <script src="/js/tasks-edit.js"></script>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <form id="form" method="POST" action="/task-save">
+
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" class="form-control" value="{{ task.name }}">
+                </div>
+
+                <fieldset>
+                    <legend>Units</legend>
+
+                    <label for="unit-select">Select unit:</label>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <select id="unit-select" name="unit-select" class="form-control"></select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-success"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="unit-list"></div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Steps</legend>
+
+                    <div class="step-list"></div>
+
+                </fieldset>
+
+                <input type="hidden" name="task_id" value="{{ task.id }}">
+                <input type="hidden" name="units">
+                <input type="hidden" name="steps">
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="/tasks" class="btn btn-default">Cancel</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

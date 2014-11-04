@@ -3,5 +3,35 @@
 {% block cardTitle %}Tasks{% endblock %}
 
 {% block cardContent %}
-    <div class="alert alert-info">Here will be content</div>
+
+    <div class="text-center">
+        <a href="/tasks/add" class="btn btn-default">
+            <i class="fa fa-plus"></i> New task
+        </a>
+    </div>
+
+    <hr>
+
+    {% for task in tasks %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <strong>{{ task.name }}</strong>
+
+                <div class="pull-right">
+                    <a href="/tasks/run/{{ task.id }}" class="text-success">
+                        <i class="fa fa-play"></i> Run
+                    </a>
+                    <a href="/tasks/edit/{{ task.id }}">
+                        <i class="fa fa-edit"></i> Edit
+                    </a>
+                    <a href="/tasks/delete/{{ task.id }}" class="text-danger">
+                        <i class="fa fa-remove"></i> Remove
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}

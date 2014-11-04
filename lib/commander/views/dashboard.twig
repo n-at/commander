@@ -3,5 +3,20 @@
 {% block cardTitle %}Dashboard{% endblock %}
 
 {% block cardContent %}
-    <div class="alert alert-info">Here will be content</div>
+
+    <table class="table table-hover">
+        <tr>
+            <td><strong>Number of units</strong></td>
+            <td>{{ stats.unitsCount }}</td>
+        </tr>
+        <tr>
+            <td><strong>Number of tasks</strong></td>
+            <td>{{ stats.tasksCount }}</td>
+        </tr>
+        <tr>
+            <td><strong>Total runs</strong></td>
+            <td>{{ stats.runsCount }}</td>
+        </tr>
+    </table>
+
 {% endblock %}

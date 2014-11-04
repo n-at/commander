@@ -8,10 +8,6 @@
 
     <p><strong>Date:</strong> {{ run.date }}</p>
 
-    <p><strong>Status:</strong> {{ run.status }}</p>
-
-    <p><strong>Message:</strong> {{ run.message }}</p>
-
     {% for unitId, unit in run.units %}
         <div class="panel panel-default">
 
@@ -36,7 +32,7 @@
 
                     <p><strong>Code:</strong> {{ step.code }}</p>
 
-                    <p><strong>Time:</strong> {{ step.time }}</p>
+                    <p><strong>Time:</strong> {{ step.time / 1000 }} seconds</p>
 
                     <p><strong>stdout:</strong></p>
                     <pre>{{ step.stdout }}</pre>

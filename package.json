@@ -1,27 +1,34 @@
 {
-  "name": "commander",
-  "version": "0.0.1",
-  "description": "",
-  "main": "commander.js",
-  "dependencies": {
-    "async": "0.9.*",
-    "body-parser": "1.9.*",
-    "cookie-parser": "1.3.*",
-    "daemonize2": "0.4.*",
-    "express": "4.10.*",
-    "express-session": "1.9.*",
-    "mkdirp": "0.5.*",
-    "mongoose": "3.8.*",
-    "nconf": "0.6.*",
-    "node-uuid": "1.4.*",
-    "qs": "2.3.*",
-    "twig": "0.7.*",
-    "winston": "0.8.*"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Alexey Nurgaliev",
-  "license": "BSD 3-Clause"
+    "name": "commander",
+    "version": "0.0.1",
+    "description": "Useful tool for remote systems administration",
+    "main": "commander.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/n-at/commander"
+    },
+    "bugs": {
+        "url": "https://github.com/n-at/commander/issues"
+    },
+    "dependencies": {
+        "async": "0.9.*",
+        "body-parser": "1.9.*",
+        "cookie-parser": "1.3.*",
+        "daemonize2": "0.4.*",
+        "express": "4.10.*",
+        "express-session": "1.9.*",
+        "mkdirp": "0.5.*",
+        "mongoose": "3.8.*",
+        "nconf": "0.6.*",
+        "node-uuid": "1.4.*",
+        "qs": "2.3.*",
+        "twig": "0.7.*",
+        "winston": "0.8.*"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Alexey Nurgaliev",
+    "license": "BSD 3-Clause"
 }

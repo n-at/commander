@@ -20,9 +20,9 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     function prepareToSubmit() {
-        $('#units').val(JSON.stringify(units));
-
-        //TODO fill steps fields
+        var $form = $('#form');
+        $form.find('input[name="units"]').val(JSON.stringify(units));
+        $form.find('input[name="steps"]').val(JSON.stringify(steps));
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,7 +42,7 @@
     }
 
     function usedUnitsList() {
-        var id = $('#task_id').val();
+        var id = $('#form').find('input[name="task_id"]').val();
         if(!id) return;
 
         $.get('/task-units/' + id, function(units) {
@@ -53,7 +53,7 @@
     }
 
     function appendUnit(unitId) {
-        //check unit appended
+        //check appended units
         for(var i = 0; i < units.length; i++) {
             if(units[i] == unitId) {
                 notify('This unit is already added', 'error');

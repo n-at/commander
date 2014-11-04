@@ -1,18 +1,27 @@
 commander
 =========
 
-_commander_ server: interface to interact with units and remotely run tasks.
+Useful tool for remote systems administration. It allows to run shell scripts on multiple remote hosts.
 
-_unit_ server: receive commands and perform actions (e.g. run shell scripts). 
+commander consists of two parts: 
+
+* commander server: interface to interact with units and remotely run tasks.
+* unit server: receives tasks from commander. 
 
 ##Installation
 
-Run in shell:
+First, you need [nodejs](http://nodejs.org) and npm.
+
+Second, for commander server installation you need [bower](http://bower.io).
+
+Commander server requires [mongodb](http://mongodb.org). Unit server has no additional dependencies.
+
+To install dependencies, run in shell:
 
     npm install
-    bower install
+    bower install #only for commander server
     
-And edit configuration in `conf/config.json`.
+Edit configuration in `conf/config.json`. Don't forget to change passwords and API keys :)
 
 ##Usage
 

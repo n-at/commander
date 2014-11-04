@@ -7,10 +7,13 @@
 
 {% block cardContent %}
 
+    {# ace #}
+    <script src="/components/ace-builds/src-min-noconflict/ace.js"></script>
+
     <script src="/js/tasks-edit.js"></script>
 
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
 
             <form id="form" method="POST" action="/task-save">
 
@@ -42,6 +45,50 @@
                 {# Steps group #}
                 <fieldset>
                     <legend>Steps</legend>
+
+                    <label for="step-select">Select step type:</label>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <select id="step-select" name="step-select" class="form-control">
+                                <option value="script">Script</option>
+                                <option value="preset">Preset</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-success" id="add-step"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    {# Step form #}
+                    <div class="hidden" id="script-form">
+                        <hr>
+
+                        <div id="script-controls">
+                            <p><strong>Script:</strong></p>
+                            <div id="script-editor"></div>
+                        </div>
+
+                        <div id="preset-controls">
+                            <div class="form-group">
+                                <label for="preset-name">Preset name:</label>
+                                <input type="text" name="preset-name" id="preset-name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="breakOnError">
+                                Break on error
+                            </label>
+                        </div>
+
+                        <div class="text-right">
+                            <button type="button" class="btn btn-success" id="save-script">Save</button>
+                            <button type="button" class="btn btn-default" id="cancel-script">Cancel</button>
+                        </div>
+
+                        <hr>
+                    </div>
 
                     <br>
 

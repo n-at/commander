@@ -5,13 +5,34 @@
 
     var unitsAvailable = {};
 
+    var scriptEditor = null;
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $(function() {
         $('#form').submit(prepareToSubmit);
-        $('#add-unit').click(addUnitClick);
+
+        $('#add-unit').click(function() {
+            var currentUnit = $('#unit-select').val();
+            appendUnit(currentUnit);
+        });
+
+        $('#add-step').click(function() {
+            var currentStepType = $('#step-select').val();
+            resetStepForm();
+            showStepForm(currentStepType);
+        });
+
+        $('#cancel-script').click(function() {
+            resetStepForm();
+        });
+
+        $('#save-script').click(function() {
+            submitStepForm();
+        });
 
         setupMessenger();
+        setupScriptEditor();
 
         loadUnits();
         loadStepList();
@@ -37,11 +58,11 @@
                 $('<option></option>').val(unit.id).text(unit.name).appendTo($unitSelect);
             }
 
-            usedUnitsList();
+            taskUnitsList();
         });
     }
 
-    function usedUnitsList() {
+    function taskUnitsList() {
         var id = $('#form').find('input[name="task_id"]').val();
         if(!id) return;
 
@@ -102,15 +123,207 @@
         $('.panel[data-unit-id="'+unitId+'"]').remove();
     }
 
-    function addUnitClick() {
-        var currentUnit = $('#unit-select').val();
-        appendUnit(currentUnit);
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var currentStepId = 0;
+    var editingStep = -1;
+
+    //load step list for current task
+    function loadStepList() {
+        var id = $('#form').find('input[name="task_id"]').val();
+        if(!id) return;
+
+        $.get('/task-steps/' + id, function(steps) {
+            for(var i = 0; i < steps.length; i++) {
+                appendStep(steps[i]);
+                currentStepId = Math.max(currentStepId, parseInt(steps[i].id));
+            }
+        });
+    }
+
+    function appendStep(step) {
+        steps.push(step);
+
+        //step block
+        var $stepList = $('#step-list');
+        var $stepContainer = $('<div class="panel panel-default"></div>')
+            .attr('data-step-id', step.id)
+            .appendTo($stepList);
+        var $step = $('<div class="panel-body"></div>').appendTo($stepContainer);
+
+        //description
+        var $caption = $('<p></p>').appendTo($step);
+        $('<strong class="step-type-caption"></strong>')
+            .text(step.type)
+            .appendTo($caption);
+        $('<span class="text-info step-break-caption"> Break on error</span>')
+            .addClass(step.breakOnError ? '' : 'hidden')
+            .appendTo($caption);
+        var $action = $('<pre></pre>').appendTo($step);
+        $('<code class="step-action-text"></code>')
+            .text(step.action)
+            .appendTo($action);
+
+        //control buttons
+        var $controlButtons = $('<div class="pull-right control-buttons"></div>').appendTo($step);
+        $('<a href="javascript:void(0)"></a>')
+            .html('<i class="fa fa-edit"></i> Edit')
+            .appendTo($controlButtons)
+            .click(function() {
+                editStepForm(step.id);
+            });
+        $('<a href="javascript:void(0)"></a>')
+            .html('<i class="fa fa-remove"></i> Remove')
+            .addClass('text-danger')
+            .appendTo($controlButtons)
+            .click(function() {
+                removeStep(step.id);
+            });
+    }
+
+    function removeStep(stepId) {
+        resetStepForm();
+
+        for(var i = 0; i < steps.length; i++) {
+            if(steps[i].id == stepId) {
+                steps.splice(i, 1);
+                break;
+            }
+        }
+
+        $('.panel[data-step-id="'+stepId+'"]').remove();
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    function loadStepList() {
-        //TODO load step list
+    var stepType = 'script';
+
+    function showStepForm(type) {
+        clearStepForm();
+
+        var $scriptControls = $('#script-controls');
+        var $presetControls = $('#preset-controls');
+
+        switch(type) {
+            case 'script':
+                $scriptControls.show();
+                $presetControls.hide();
+                break;
+
+            case 'preset':
+                $scriptControls.hide();
+                $presetControls.show();
+                break;
+
+            default:
+        }
+
+        $('#script-form').removeClass('hidden');
+        stepType = type;
+    }
+
+    //reset step form to it's initial state
+    function resetStepForm() {
+        editingStep = -1;
+        stepType = 'script';
+        clearStepForm();
+        $('#script-form').addClass('hidden');
+    }
+
+    function clearStepForm() {
+        scriptEditor.setValue('');
+        var $form = $('#form');
+        $form.find('input[name="breakOnError"]').prop('checked', false);
+        $form.find('input[name="preset-name"]').val('');
+    }
+
+    function submitStepForm() {
+        var action = '';
+        switch(stepType) {
+            case 'script':
+                action = scriptEditor.getValue();
+                break;
+            case 'preset':
+                action = $('input[name="preset-name"]').val();
+                break;
+            default:
+                action = '';
+        }
+
+        var breakOnError = $('input[name="breakOnError"]').is(':checked');
+
+        var step = {
+            id: ++currentStepId,
+            type: stepType,
+            action: action,
+            breakOnError: breakOnError ? 1 : 0
+        };
+
+        if(editingStep != -1) {
+            //edit step
+            step.id = steps[editingStep].id;
+            steps[editingStep] = step;
+            updateStepBlock(step);
+        } else {
+            //add step
+            appendStep(step);
+        }
+
+        resetStepForm();
+    }
+
+    //show step editing form
+    function editStepForm(stepId) {
+        var step = null;
+        var stepIndex = null;
+        for(var i = 0; i < steps.length; i++) {
+            if(steps[i].id == stepId) {
+                step = steps[i];
+                stepIndex = i;
+                break;
+            }
+        }
+        if(step === null) return;
+
+        editingStep = stepIndex;
+
+        showStepForm(step.type);
+
+        //load form data
+        switch(step.type) {
+            case 'script':
+                scriptEditor.setValue(step.action);
+                break;
+
+            case 'preset':
+                $('input[name="preset-name"]').val(step.action);
+                break;
+
+            default:
+        }
+
+        $('input[name="breakOnError"]').prop('checked', step.breakOnError);
+    }
+
+    function updateStepBlock(step) {
+        var $stepBlock = $('.panel[data-step-id="'+step.id+'"]');
+        $stepBlock.find('.step-type-caption').text(step.type);
+        $stepBlock.find('.step-action-text').text(step.action);
+
+        var $stepBreakCaption = $stepBlock.find('.step-break-caption');
+        if(step.breakOnError) {
+            $stepBreakCaption.removeClass('hidden');
+        } else {
+            $stepBreakCaption.addClass('hidden');
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function setupScriptEditor() {
+        scriptEditor = ace.edit('script-editor');
+        scriptEditor.setTheme('ace/theme/github');
+        scriptEditor.getSession().setMode('ace/mode/sh');
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////

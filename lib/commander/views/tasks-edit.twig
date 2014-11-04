@@ -19,6 +19,7 @@
                     <input type="text" name="name" id="name" class="form-control" value="{{ task.name }}">
                 </div>
 
+                {# Units group #}
                 <fieldset>
                     <legend>Units</legend>
 
@@ -28,21 +29,27 @@
                             <select id="unit-select" name="unit-select" class="form-control"></select>
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-success"><i class="fa fa-plus"></i></button>
+                            <button type="button" class="btn btn-success" id="add-unit"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
 
-                    <div class="unit-list"></div>
+                    <br>
+
+                    <div id="unit-list"></div>
 
                 </fieldset>
 
+                {# Steps group #}
                 <fieldset>
                     <legend>Steps</legend>
 
-                    <div class="step-list"></div>
+                    <br>
+
+                    <div id="step-list"></div>
 
                 </fieldset>
 
+                {# Hidden fields - fills with JS before submit #}
                 <input type="hidden" name="task_id" value="{{ task.id }}">
                 <input type="hidden" name="units">
                 <input type="hidden" name="steps">

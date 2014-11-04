@@ -1,3 +1,3 @@
 //commander server
 
-var commander = require('./lib/commander');
+require('./lib/commander');

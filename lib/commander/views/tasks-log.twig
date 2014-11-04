@@ -1,0 +1,30 @@
+{% extends "card.twig" %}
+
+{% block cardTitle %}Task log{% endblock %}
+
+{% block cardContent %}
+
+    <p>
+        <strong>Task:</strong>
+        {{ task.name }}
+    </p>
+
+    <table class="table table-hover">
+        <tr>
+            <th>Date</th>
+            <th>Run id</th>
+            <th>Status</th>
+            <th>Message</th>
+        </tr>
+
+        {% for run in runs %}
+            <tr>
+                <td>{{ run.date }}</td>
+                <td><a href="/run/{{ task.id }}/{{ run.id }}">{{ run.id }}</a></td>
+                <td>{{ run.status }}</td>
+                <td>{{ run.message }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

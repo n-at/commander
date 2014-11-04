@@ -3,7 +3,22 @@
 {% block cardTitle %}Task run{% endblock %}
 
 {% block cardContent %}
-    <div class="alert alert-info">
-        Here will be content
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <table class="table table-hover">
+                <tr>
+                    <th>Task</th>
+                    <th>{{ task.name }}</th>
+                </tr>
+                <tr>
+                    <td>Run id</td>
+                    <td><a href="/run/{{ task.id }}/{{ runId }}">{{ runId }}</a></td>
+                </tr>
+            </table>
+
+        </div>
     </div>
+
 {% endblock %}

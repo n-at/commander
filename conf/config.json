@@ -4,6 +4,7 @@
         "port": "4000",
         "session_secret": "secret_qwerty_1234567890",
         "password": "",
+        "api_key": "commander",
 
         "mongodb": {
             "host": "localhost",

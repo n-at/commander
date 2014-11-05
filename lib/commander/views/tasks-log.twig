@@ -4,9 +4,11 @@
 
 {% block cardContent %}
 
-    <p>
-        <strong>Task:</strong>
-        {{ task.name }}
+    <p><strong>Task:</strong> {{ task.name }}</p>
+
+    <p><a href="/tasks/clear-log/{{ task.id }}" class="text-danger">
+            <i class="fa fa-remove"></i> Clear task log
+        </a>
     </p>
 
     <table class="table table-hover">

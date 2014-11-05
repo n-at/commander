@@ -4,47 +4,67 @@
 
 {% block cardContent %}
 
-    <p><strong>Task:</strong> {{ task.name }}</p>
+    <p><strong>Task:</strong> <a href="/tasks/log/{{ task.id }}">{{ task.name }}</a></p>
 
     <p><strong>Date:</strong> {{ run.date }}</p>
 
+    <p><strong>Run id:</strong> {{ run.id }}</p>
+
+    <hr>
+
     {% for unitId, unit in run.units %}
-        <div class="panel panel-default">
 
-            <div class="panel-heading">
-                <strong>Unit:</strong> {{ units[unitId] }}
-            </div>
+        <p><strong>Unit:</strong> {{ units[unitId] }}</p>
 
-            <div class="panel-body">
+        {% set statusClass = 'text-info' %}
+        {% if unit.status == 'OK' %}
+            {% set statusClass = 'text-success' %}
+        {% elseif unit.status == 'FAIL' %}
+            {% set statusClass = 'text-danger' %}
+        {% endif %}
 
-                <p><strong>Status:</strong> {{ unit.status }}</p>
+        <p><strong>Status:</strong> <span class="{{ statusClass }}">{{ unit.status }} - {{ unit.message }}</span></p>
 
-                <p><strong>Message:</strong> {{ unit.message }}</p>
+        <ul class="list-group">
+            {% for step in unit.steps %}
+                <li class="list-group-item">
+                    {# Status #}
+                    <p>
+                        Success:
+                        {% if step.success == 'true' %}
+                            <span class="text-success"><i class="fa fa-check"></i> {{ step.message }}</span>
+                        {% else %}
+                            <span class="text-danger"><i class="fa fa-times"></i> {{ step.message }}</span>
+                        {% endif %}
+                    </p>
 
-                <p><strong>Steps:</strong></p>
+                    {# Code and time #}
+                    <p>
+                        {% if step.code %}
+                            Code: <strong>{{ step.code }}</strong>
+                        {% endif %}
 
-                {% for step in unit.steps %}
-                    <hr>
+                        {% if step.time %}
+                            Time: <strong>{{ step.time / 1000 }}</strong> seconds
+                        {% endif %}
+                    </p>
 
-                    <p><strong>Success:</strong> {{ step.success }}</p>
+                    {# Output streams #}
+                    {% if step.stdout %}
+                        <p>stdout:</p>
+                        <pre>{{ step.stdout }}</pre>
+                    {% endif %}
 
-                    <p><strong>Message:</strong> {{ step.message }}</p>
+                    {% if step.stderr %}
+                        <p>stderr:</p>
+                        <pre>{{ step.stderr }}</pre>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
 
-                    <p><strong>Code:</strong> {{ step.code }}</p>
+        <hr>
 
-                    <p><strong>Time:</strong> {{ step.time / 1000 }} seconds</p>
-
-                    <p><strong>stdout:</strong></p>
-                    <pre>{{ step.stdout }}</pre>
-
-                    <p><strong>stderr:</strong></p>
-                    <pre>{{ step.stderr }}</pre>
-
-                {% endfor %}
-
-            </div>
-
-        </div>
     {% endfor %}
 
 {% endblock %}

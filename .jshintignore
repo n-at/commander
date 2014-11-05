@@ -3,3 +3,4 @@ log
 preset
 tmp
 public/components
+public/js/uuid.js

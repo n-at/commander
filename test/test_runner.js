@@ -5,6 +5,8 @@ var script = '#!/bin/bash\n' +
     'ls /tmp\n';
 
 runner.executeScript(script, function(err, result) {
-    if(err) throw err;
+    if(err) {
+        throw err;
+    }
     console.log(result);
 });

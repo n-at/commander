@@ -64,7 +64,9 @@
 
     function taskUnitsList() {
         var id = $('#form').find('input[name="task_id"]').val();
-        if(!id) return;
+        if(!id) {
+            return;
+        }
 
         $.get('/task-units/' + id, function(units) {
             for(var i = 0; i < units.length; i++) {
@@ -112,7 +114,7 @@
                 removeUnit(unitId);
             });
 
-        $('<div class="clearfix"></div>').appendTo($step);
+        $('<div class="clearfix"></div>').appendTo($unit);
     }
 
     function removeUnit(unitId) {
@@ -133,7 +135,9 @@
     //load step list for current task
     function loadStepList() {
         var id = $('#form').find('input[name="task_id"]').val();
-        if(!id) return;
+        if(!id) {
+            return;
+        }
 
         $.get('/task-steps/' + id, function(steps) {
             for(var i = 0; i < steps.length; i++) {
@@ -285,7 +289,9 @@
                 break;
             }
         }
-        if(step === null) return;
+        if(step === null) {
+            return;
+        }
 
         editingStep = stepIndex;
 
@@ -308,7 +314,7 @@
     }
 
     function updateStepBlock(step) {
-        var $stepBlock = $('.panel[data-step-id="'+step.id+'"]');
+        var $stepBlock = $('.list-group-item[data-step-id="'+step.id+'"]');
         $stepBlock.find('.step-type-caption').text(step.type);
         $stepBlock.find('.step-action-text').text(step.action);
 

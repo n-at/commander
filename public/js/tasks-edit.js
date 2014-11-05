@@ -99,6 +99,10 @@
         $('<em></em>')
             .text(unit ? ' '+unit.address : '')
             .appendTo($unit);
+        $('<span></span>')
+            .text(unit ? ' '+unit.status : '')
+            .addClass('text-info')
+            .appendTo($unit);
 
         //control buttons
         var $controlBlock = $('<div class="pull-right"></div>').appendTo($unit);

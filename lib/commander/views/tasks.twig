@@ -4,13 +4,10 @@
 
 {% block cardContent %}
 
-    <div class="text-center">
-        <a href="/tasks/add" class="btn btn-default">
-            <i class="fa fa-plus"></i> New task
+    <p><a href="/tasks/add" class="btn btn-default">
+        <i class="fa fa-plus"></i> New task
         </a>
-    </div>
-
-    <hr>
+    </p>
 
     <ul class="list-group">
         {% for task in tasks %}

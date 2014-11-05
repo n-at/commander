@@ -12,6 +12,10 @@
 
             <form method="POST" action="/unit-save">
 
+                {% if unit.id %}
+                    <p><strong>Unit id:</strong> {{ unit.id }}</p>
+                {% endif %}
+
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" class="form-control" value="{{ unit.name }}">

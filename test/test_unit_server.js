@@ -1,4 +1,3 @@
-var http = require('http');
 var qs = require('qs');
 var uuid = require('node-uuid');
 var config = require('../conf');
@@ -9,20 +8,7 @@ var options = {
     method: 'POST'
 };
 
-//create request
-var req = http.request(options, function(res) {
-    var body = '';
-
-    res.on('data', function(data) {
-        body += data;
-    });
-
-    res.on('end', function() {
-        console.log(qs.parse(body));
-    });
-});
-
-req.end(qs.stringify({
+var data = qs.stringify({
     api_key: config.get('unit:api_key'),
     task_id: uuid.v4(),
     run_id: uuid.v4(),
@@ -37,4 +23,6 @@ req.end(qs.stringify({
             breakOnError: 0
         }
     ]
-}));
+});
+
+require('./test_request')(options, data);

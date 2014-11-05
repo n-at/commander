@@ -7,7 +7,15 @@
     <table class="table table-hover">
         <tr>
             <td><strong>Number of units</strong></td>
-            <td>{{ stats.unitsCount }}</td>
+            <td>{{ stats.unitsCount.total }}</td>
+        </tr>
+        <tr>
+            <td><strong>Units online</strong></td>
+            <td>{{ stats.unitsCount.online }}</td>
+        </tr>
+        <tr>
+            <td><strong>Units offline</strong></td>
+            <td>{{ stats.unitsCount.offline }}</td>
         </tr>
         <tr>
             <td><strong>Number of tasks</strong></td>

@@ -12,9 +12,9 @@
 
     <hr>
 
-    {% for unit in units %}
-        <div class="panel panel-default">
-            <div class="panel-body">
+    <ul class="list-group">
+        {% for unit in units %}
+            <li class="list-group-item">
 
                 <strong>{{ unit.name }}</strong>
 
@@ -34,8 +34,9 @@
 
                 </div>
 
-            </div>
-        </div>
-    {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+
 
 {% endblock %}

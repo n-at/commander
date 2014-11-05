@@ -85,10 +85,9 @@
 
         //unit block
         var $unitList = $('#unit-list');
-        var $unitContainer = $('<div class="panel panel-default"></div>')
+        var $unit = $('<li class="list-group-item"></li>')
             .attr('data-unit-id', unitId)
             .appendTo($unitList);
-        var $unit = $('<div class="panel-body"></div>').appendTo($unitContainer);
 
         //unit description
         var unit = unitsAvailable[unitId] ? unitsAvailable[unitId] : false;
@@ -106,14 +105,14 @@
 
         //control buttons
         var $controlBlock = $('<div class="pull-right"></div>').appendTo($unit);
-
-        //remove button
         $('<a href="javascript:void(0)" class="text-danger"></a>')
             .appendTo($controlBlock)
             .html('<i class="fa fa-remove"></i>')
             .click(function() {
                 removeUnit(unitId);
             });
+
+        $('<div class="clearfix"></div>').appendTo($step);
     }
 
     function removeUnit(unitId) {
@@ -124,7 +123,7 @@
             }
         }
 
-        $('.panel[data-unit-id="'+unitId+'"]').remove();
+        $('.list-group-item[data-unit-id="'+unitId+'"]').remove();
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,10 +147,9 @@
 
         //step block
         var $stepList = $('#step-list');
-        var $stepContainer = $('<div class="panel panel-default"></div>')
+        var $step = $('<li class="list-group-item"></li>')
             .attr('data-step-id', step.id)
             .appendTo($stepList);
-        var $step = $('<div class="panel-body"></div>').appendTo($stepContainer);
 
         //description
         var $caption = $('<p></p>').appendTo($step);
@@ -181,6 +179,8 @@
             .click(function() {
                 removeStep(step.id);
             });
+
+        $('<div class="clearfix"></div>').appendTo($step);
     }
 
     function removeStep(stepId) {
@@ -193,7 +193,7 @@
             }
         }
 
-        $('.panel[data-step-id="'+stepId+'"]').remove();
+        $('.list-group-item[data-step-id="'+stepId+'"]').remove();
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////

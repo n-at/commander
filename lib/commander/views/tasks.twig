@@ -12,9 +12,9 @@
 
     <hr>
 
-    {% for task in tasks %}
-        <div class="panel panel-default">
-            <div class="panel-body">
+    <ul class="list-group">
+        {% for task in tasks %}
+            <li class="list-group-item">
 
                 <strong>{{ task.name }}</strong>
 
@@ -38,8 +38,9 @@
 
                 </div>
 
-            </div>
-        </div>
-    {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+
 
 {% endblock %}

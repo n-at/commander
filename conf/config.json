@@ -12,7 +12,9 @@
             "username": "admin",
             "password": "",
             "dbname": "commander"
-        }
+        },
+
+        "output_length_limit": 250000
     },
 
     "unit": {

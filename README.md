@@ -5,7 +5,7 @@ Useful tool for remote systems administration. It allows to run shell scripts on
 
 commander consists of two parts: 
 
-* commander server: interface to interact with units and remotely run tasks.
+* commander server: web-interface to interact with units and run tasks.
 * unit server: receives tasks from commander. 
 
 ##Installation

@@ -6,3 +6,12 @@
     height: 20em;
     border: 1px #ccc solid;
 }
+
+.output-hidden {
+    display: none;
+}
+
+.output-text p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

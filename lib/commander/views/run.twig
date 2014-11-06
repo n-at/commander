@@ -4,6 +4,8 @@
 
 {% block cardContent %}
 
+    <script src="/js/runs.js"></script>
+
     <p><strong>Task:</strong> <a href="/tasks/log/{{ task.id }}">{{ task.name | escape }}</a></p>
 
     <p><strong>Date:</strong> {{ run.date }}</p>
@@ -51,13 +53,23 @@
 
                     {# Output streams #}
                     {% if step.stdout %}
-                        <p>stdout:</p>
-                        <pre>{{ step.stdout | escape }}</pre>
+                        <div class="output-text">
+                            <p class="text-info">stdout
+                                <i class="fa fa-chevron-down output-hidden"></i>
+                                <i class="fa fa-chevron-up"></i>
+                            </p>
+                            <pre>{{ step.stdout | escape }}</pre>
+                        </div>
                     {% endif %}
 
                     {% if step.stderr %}
-                        <p>stderr:</p>
-                        <pre>{{ step.stderr | escape }}</pre>
+                        <div class="output-text">
+                            <p class="text-danger">stderr
+                                <i class="fa fa-chevron-down output-hidden"></i>
+                                <i class="fa fa-chevron-up"></i>
+                            </p>
+                            <pre>{{ step.stderr | escape }}</pre>
+                        </div>
                     {% endif %}
                 </li>
             {% endfor %}

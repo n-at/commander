@@ -10,6 +10,8 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $(function() {
+
+        //bindings
         $('#form').submit(prepareToSubmit);
 
         $('#add-unit').click(function() {
@@ -31,9 +33,15 @@
             submitStepForm();
         });
 
-        setupMessenger();
-        setupScriptEditor();
+        $('#preset-name').keypress(function(e) {
+            if(e.which == 13) {
+                submitStepForm();
+                e.preventDefault(); //don't submit an entire form
+            }
+        });
 
+        //initialization
+        setupScriptEditor();
         loadUnits();
         loadStepList();
     });
@@ -41,6 +49,12 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     function prepareToSubmit() {
+        var name = $('#name').val();
+        if(!name) {
+            notify('Enter task name', 'error');
+            return false;
+        }
+
         var $form = $('#form');
         $form.find('input[name="units"]').val(JSON.stringify(units));
         $form.find('input[name="steps"]').val(JSON.stringify(steps));
@@ -332,25 +346,6 @@
         scriptEditor = ace.edit('script-editor');
         scriptEditor.setTheme('ace/theme/github');
         scriptEditor.getSession().setMode('ace/mode/sh');
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    function setupMessenger() {
-        Messenger.options = {
-            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
-            theme: 'flat'
-        };
-    }
-
-    function notify(message, type) {
-        var messageType = type ? type : 'info';
-        Messenger().post({
-            message: message,
-            type: messageType,
-            hideAfter: 5,
-            showCloseButton: true
-        });
     }
 
 })();

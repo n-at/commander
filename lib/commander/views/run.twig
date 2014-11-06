@@ -52,12 +52,12 @@
                     {# Output streams #}
                     {% if step.stdout %}
                         <p>stdout:</p>
-                        <pre>{{ step.stdout }}</pre>
+                        <pre>{{ step.stdout | escape }}</pre>
                     {% endif %}
 
                     {% if step.stderr %}
                         <p>stderr:</p>
-                        <pre>{{ step.stderr }}</pre>
+                        <pre>{{ step.stderr | escape }}</pre>
                     {% endif %}
                 </li>
             {% endfor %}

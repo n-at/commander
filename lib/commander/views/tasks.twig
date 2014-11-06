@@ -13,7 +13,7 @@
         {% for task in tasks %}
             <li class="list-group-item">
 
-                <strong>{{ task.name }}</strong>
+                <strong>{{ task.name | escape }}</strong>
 
                 <div class="pull-right control-buttons">
 

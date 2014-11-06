@@ -13,11 +13,11 @@
         {% for unit in units %}
             <li class="list-group-item">
 
-                <strong>{{ unit.name }}</strong>
+                <strong>{{ unit.name | escape }}</strong>
 
-                <em>{{ unit.address }}</em>
+                <em>{{ unit.address | escape }}</em>
 
-                <span class="text-info">{{ unit.status }}</span>
+                <span class="text-info">{{ unit.status | escape }}</span>
 
                 <div class="pull-right control-buttons">
 

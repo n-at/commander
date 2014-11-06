@@ -4,7 +4,7 @@
 
 {% block cardContent %}
 
-    <p><strong>Task:</strong> <a href="/tasks/log/{{ task.id }}">{{ task.name }}</a></p>
+    <p><strong>Task:</strong> <a href="/tasks/log/{{ task.id }}">{{ task.name | escape }}</a></p>
 
     <p><strong>Date:</strong> {{ run.date }}</p>
 
@@ -14,7 +14,7 @@
 
     {% for unitId, unit in run.units %}
 
-        <p><strong>Unit:</strong> {{ units[unitId] }}</p>
+        <p><strong>Unit:</strong> {{ units[unitId] | escape }}</p>
 
         {% set statusClass = 'text-info' %}
         {% if unit.status == 'OK' %}
@@ -32,9 +32,9 @@
                     <p>
                         Success:
                         {% if step.success == 'true' %}
-                            <span class="text-success"><i class="fa fa-check"></i> {{ step.message }}</span>
+                            <span class="text-success"><i class="fa fa-check"></i> {{ step.message | escape }}</span>
                         {% else %}
-                            <span class="text-danger"><i class="fa fa-times"></i> {{ step.message }}</span>
+                            <span class="text-danger"><i class="fa fa-times"></i> {{ step.message | escape }}</span>
                         {% endif %}
                     </p>
 

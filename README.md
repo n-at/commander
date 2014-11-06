@@ -1,7 +1,7 @@
 commander
 =========
 
-Useful tool for remote systems administration. It allows to run shell scripts on multiple remote hosts.
+Useful tool for remote systems administration. It allows to run shell scripts on multiple remote hosts in parallel.
 
 commander consists of two parts: 
 
@@ -16,18 +16,33 @@ Second, for commander server installation you need [bower](http://bower.io).
 
 Commander server requires [mongodb](http://mongodb.org). Unit server has no additional dependencies.
 
-To install dependencies, run in shell:
+To install npm dependencies, run in shell: `npm install` (both for commander and unit). 
 
-    npm install
-    bower install #only for commander server
-    
+Commander server has additional bower dependencies which should be installed with: `bower install`.
+
 Edit configuration in `conf/config.json`. Don't forget to change passwords and API keys :)
 
 ##Usage
 
+###commander server
+
 Start commander server: `node commander-ctl start`
  
-Start commander unit: `node unit-ctl start`
+After start commander server web interface will be available at `http://host:port` as it set in configuration.
+
+First you need to add units. To to this, click "Units" in menu, then "Add unit" button and fill the form fields.
+
+To create a new task, click "Tasks" in menu and then "New task" button. In the form you should add units which will
+run this task and set task steps. Step can be one of the following:
+
+* _script_: run a shell script, stored in task
+* _preset_: run a script, stored in _preset_ directory of unit server
+
+_Break on error_ option tells unit to stop task execution when step fails (non-zero return code or shell cannot start).
+
+###unit server
+
+Start commander unit: `node unit-ctl start`. No additional actions required. 
 
 ##License
 

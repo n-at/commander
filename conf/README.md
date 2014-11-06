@@ -21,6 +21,6 @@ unit server configuration:
 
 Common settings:
 
-* `log_level`: severity of messages to be put in the log 
-  (can be _debug_, _info_, _warn_, _error_)
+* `log_level`: severity of messages to be put in the log. Can be _debug_, _info_, _warn_, _error_. 
+  Development value is _debug_, recommended production value is _warn_.
 * `log_name`: log file name

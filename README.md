@@ -20,7 +20,8 @@ To install npm dependencies, run in shell: `npm install` (both for commander and
 
 Commander server has additional bower dependencies which should be installed with: `bower install`.
 
-Edit configuration in `conf/config.json`. Don't forget to change passwords and API keys :)
+Edit configuration in `conf/config.json`. Options are described in `conf/README.md`. Don't forget to 
+change passwords and API keys :)
 
 ##Usage
 

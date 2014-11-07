@@ -29,7 +29,7 @@ change passwords and API keys :)
 
 Start commander server: `node commander-ctl start`
  
-After start commander server web interface will be available at `http://host:port` as it set in configuration.
+After start commander server web interface will be available at `http://[host]:[port]` as it set in configuration.
 
 First you need to add units. To to this, click "Units" in menu, then "Add unit" button and fill the form fields.
 
@@ -40,6 +40,8 @@ run this task and set task steps. Step can be one of the following:
 * _preset_: run a script, stored in _preset_ directory of unit server
 
 _Break on error_ option tells unit to stop task execution when step fails (non-zero return code or shell cannot start).
+
+Task can be run from web interface or by querying `http://[host]:[port]/task-run?api_key=[commander API key]&id=[task id]`.
 
 ###unit server
 

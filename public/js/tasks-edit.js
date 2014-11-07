@@ -64,6 +64,12 @@
 
     function loadUnits() {
         $.get('/unit-list', function(units) {
+
+            units.sort(function(unitA, unitB) {
+                if(unitA.name == unitB.name) return 0;
+                return (unitA < unitB) ? -1 : 1;
+            });
+
             var $unitSelect = $('#unit-select');
 
             for(var i = 0; i < units.length; i++) {

@@ -4,16 +4,21 @@
 
 {% block cardContent %}
 
-    <p><a class="btn btn-default" href="/units/add">
+    <div>
+        <a class="btn btn-default" href="/units/add">
             <i class="fa fa-plus"></i> Add unit
         </a>
-    </p>
+        <div class="pull-right">{% include "filterForm.twig" %}</div>
+        <div class="clearfix"></div>
+    </div>
+
+    <br>
 
     <ul class="list-group">
         {% for unit in units %}
             <li class="list-group-item">
 
-                <strong>{{ unit.name | escape }}</strong>
+                <strong class="item-name">{{ unit.name | escape }}</strong>
 
                 <em>{{ unit.address | escape }}</em>
 
@@ -36,6 +41,5 @@
             </li>
         {% endfor %}
     </ul>
-
 
 {% endblock %}

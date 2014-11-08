@@ -12,9 +12,10 @@ commander consists of two parts:
 
 First, you need [nodejs](http://nodejs.org) and npm.
 
-Second, for commander server installation you need [bower](http://bower.io).
+Second, for commander server installation you need [bower](http://bower.io). Also commander server 
+requires [mongodb](http://mongodb.org). 
 
-Commander server requires [mongodb](http://mongodb.org). Unit server has no additional dependencies.
+Unit server has no additional dependencies.
 
 To install npm dependencies, run in shell: `npm install` (both for commander and unit). 
 

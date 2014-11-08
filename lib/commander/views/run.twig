@@ -16,7 +16,7 @@
 
     {% for unitId, unit in run.units %}
 
-        <p><strong>Unit:</strong> {{ units[unitId] | escape }}</p>
+        <h4>{{ units[unitId] | escape }}</h4>
 
         {% set statusClass = 'text-info' %}
         {% if unit.status == 'OK' %}

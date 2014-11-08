@@ -22,7 +22,9 @@
 
                 <em>{{ unit.address | escape }}</em>
 
-                <span class="text-info">{{ unit.status | escape }}</span>
+                <span class="text-info">{{ unit.status.message | escape }}</span>
+
+                <small class="text-muted">{{ unit.status.version | escape }}</small>
 
                 <div class="pull-right control-buttons">
 

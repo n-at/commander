@@ -121,7 +121,7 @@
             .text(unit ? ' '+unit.address : '')
             .appendTo($unit);
         $('<span></span>')
-            .text(unit ? ' '+unit.status : '')
+            .text(unit ? ' '+unit.status.message : '')
             .addClass('text-info')
             .appendTo($unit);
 

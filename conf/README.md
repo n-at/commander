@@ -11,6 +11,7 @@ commander server configuration:
 * `api_key`: key for remote calls
 * `mongodb`: mongo db connection options
 * `output_length_limit`: maximum length of step output (in characters)
+* `check_unit_status`: whether commander should send unit check requests
 * `unit_status_timeout`: timeout of unit status check connection
 
 unit server configuration:

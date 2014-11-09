@@ -26,7 +26,8 @@
         "api_key": "remote_unit",
         "shell": "/bin/bash",
         "preset_only": false,
-        "request_max_length": 1000000
+        "request_max_length": 1000000,
+        "response_timeout": 10800000
     },
 
     "log_level": "debug",

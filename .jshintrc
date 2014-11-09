@@ -7,7 +7,6 @@
     ],
 
     "bitwise": true,
-    "curly": true,
     "forin": true,
     "freeze": true,
     "immed": true,

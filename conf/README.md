@@ -20,7 +20,7 @@ unit server configuration:
 * `shell`: path to shell executable
 * `preset_only`: disables execution of external scripts
 * `request_max_length`: maximum length of request (in bytes)
-* `response_timeout`: unit response timeout (time after connection will be destroyed) in milliseconds. 
+* `response_timeout`: unit response timeout (time after connection will be closed) in milliseconds. 
   Default: 3 hours (10800000 ms)
 
 Common settings:

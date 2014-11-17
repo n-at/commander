@@ -25,7 +25,7 @@
             {% set statusClass = 'text-danger' %}
         {% endif %}
 
-        <p><strong>Status:</strong> <span class="{{ statusClass }}">{{ unit.status }} - {{ unit.message }}</span></p>
+        <p>Status: <span class="{{ statusClass }}">{{ unit.status }} - {{ unit.message }}</span></p>
 
         <ul class="list-group">
             {% for step in unit.steps %}

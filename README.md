@@ -44,6 +44,8 @@ _Break on error_ option tells unit to stop task execution when step fails (non-z
 
 Task can be run from web interface or by querying `http://[host]:[port]/task-run?api_key=[commander API key]&id=[task id]`.
 
+Run results are also available at `http://[host]:[port]/run-result?api_key=[commander API key]&id=[run id]`.
+
 ###unit server
 
 Start commander unit: `node unit-ctl start`. No additional actions required. 

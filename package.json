@@ -1,6 +1,6 @@
 {
     "name": "commander",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "description": "Useful tool for remote systems administration",
     "main": "commander.js",
     "repository": {
